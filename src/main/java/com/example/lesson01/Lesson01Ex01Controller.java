@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @RequestMapping("/lesson01/ex01")
 @Controller // Spring bean 스프링 컨테이너 안 스프링빈(객체)들을 관리해준다.
+// ctrl + shift + r로 파일 바로 찾기
 public class Lesson01Ex01Controller {
 	
 	// return String: HTML
@@ -42,6 +43,8 @@ public class Lesson01Ex01Controller {
 		// spring-boot-starter-web에 들어있는 라이브러리(의존성 라이브러리)
 		// gradle dependencies에 없다면 jackson lib gradle 등으로 검색해서 추가하면 됨 (mvnrepository.com 사이트 참고)
 		
+		// {"키"=값} => JAVA Map
+		// map을 리턴하면 JSON으로 나타난다. web starter 안에 jackson 라이브러리가 있기 때문
 		return map;
 	}
 	
