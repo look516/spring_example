@@ -18,4 +18,72 @@
         WHERE
             `id` = #{id}
     </select>
+    
+    <!-- select 이외에는 result type이 없다. -->
+    <insert id="insertReview" parameterType="com.example.lesson03.domain.Review">
+    	INSERT INTO `new_review`
+    	(
+    		`storeId`
+            , `menu`
+            , `userName`
+            , `point`
+            , `review`
+            , `createdAt`
+            , `updatedAt`
+    	)
+    	VALUES
+    	(
+    		#{storeId}
+    		, #{menu}
+    		, #{userName}
+    		, #{point}
+    		, #{review}
+    		, NOW()
+    		, NOW()
+    	)
+    </insert>
+    
+    
+    
+    <!-- 이렇게 똑같은 쿼리문 계속 쓰는 게 힘드므로 JPA로 넘어가고 있음 -->
+    <!-- @Param("")에 들어가는 것이 #{}과 연결된다!!! -->
+    <insert id="insertReviewAsField" parameterType="map">
+    	INSERT INTO `new_review`
+    	(
+    		`storeId`
+            , `menu`
+            , `userName`
+            , `point`
+            , `review`
+            , `createdAt`
+            , `updatedAt`
+    	)
+    	VALUES
+    	(
+    		#{storeId}
+    		, #{menu}
+    		, #{userName}
+    		, #{point}
+    		, #{review}
+    		, NOW()
+    		, NOW()
+    	)
+    </insert>
+    
+    
+    
+    
+    
+    
+    
+    <!-- 메소드에 파라미터가 존재하면 파라미터타입을 명시한다 -->
+    <!-- xml은 하나의 -->
+    <update id="updateReviewById" parameterType="map">
+    	UPDATE `new_review`
+    	SET
+    		`review` = #{review}
+    		, `updatedAt` = NOW()
+    	WHERE
+    		`id` = #{id}
+    </update>
 </mapper>

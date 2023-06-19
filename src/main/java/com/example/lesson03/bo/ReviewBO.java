@@ -22,4 +22,26 @@ public class ReviewBO {
 	public Review getReviewById(int id) {
 		return reviewMapper.selectReviewById(id);
 	}
+	
+	
+	
+	// input: Review
+	// output: 성공된 행의 개수 int
+	public int addReview(Review review) {
+		return reviewMapper.insertReview(review);
+	}
+	
+	// Double로 해도 됨 (null허용)
+	// 이 함수의 파라미터 변수명은 BO의 것이므로 '파라미터'와 '함수 내' 변수만 일치하면 됨. 다른 파일 내 변수명과 일치할 필요없음
+	public int addReviewAsField(int storeId, String menu,
+			String userName, double point, String review) {
+		return reviewMapper.insertReviewAsField(storeId, menu, userName, point, review);
+	}
+	
+	
+	
+	// review는 필수값
+	public int updateReviewById(int id, String review) {
+		return reviewMapper.updateReviewById(id, review);
+	}
 }
