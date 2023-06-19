@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 // JSP 뿌리기
+//view는 responsebody안 쓰고 데이터는 responsebody써야함
 @Controller		// RestController 아님 주의, ResponseBody X
 public class Lesson01Ex02Controller {
 	
