@@ -1,6 +1,7 @@
 package com.example.lesson05;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,5 +48,20 @@ public class Lesson05Controller {
 		model.addAttribute("users", users);
 		
 		return "lesson05/ex02";
+	}
+	
+	@GetMapping("/ex03")
+	// model은 jsp에서 데이터를 쓸 수 있도록 담아둔다.
+	public String ex03(Model model) {
+		Date now = new Date();
+		model.addAttribute("today", now);
+		
+		// ~lesson05/ex03.jsp를 리턴해 들어간다.
+		return "lesson05/ex03";
+	}
+	
+	@GetMapping("/ex04")
+	public String ex04() {
+		return "lesson05/ex04";
 	}
 }
