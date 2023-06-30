@@ -19,4 +19,10 @@ public class UserBO {
 	public User getLatestUser() {
 		return userMapper.selectLatestUser();
 	}
+	
+	
+	
+	public boolean existUserByName(String name) {
+		return userMapper.existUserByName(name);
+	}
 }

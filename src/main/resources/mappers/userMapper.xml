@@ -38,4 +38,14 @@
 		ORDER BY `id` DESC
 		LIMIT 1
  	</select>
+ 	
+ 	<!-- 0: false, 0이 아닌 수: true(중복됨) -->
+ 	<select id="existUserByName" parameterType="string" resultType="boolean">
+ 		SELECT
+ 			COUNT(1)
+ 		FROM
+ 			`new_user`
+ 		WHERE
+ 			`name` = #{name} <!-- 자주 where절로 들어갈 때 그 필드를 index로 걸기 -->
+ 	</select>
  </mapper>
