@@ -1,6 +1,7 @@
 package com.example.lesson04.bo;
 
 import java.time.ZonedDateTime;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -68,7 +69,21 @@ public class StudentBO {
 			
 			student = studentRepository.save(student); // 다시 셀렉트된 것을 받아온다. // update
 		}
-		
 		return student;
+	}
+	
+	// lesson07 ex01 delete
+	// nullable의 한 데이터만 삭제하고 싶으면 update?
+	// 데이터 삭제 후에는 데이터를 가져올 수 없으므로 가져온 다음에 삭제하자.
+	public void deleteStudentById(int id) {
+		// 방법1) StudentEntity 자료형
+//		StudentEntity student = studentRepository.findById(id).orElse(null);
+//		if (student != null) {
+//			studentRepository.delete(student);
+//		}
+		
+		// 방법2) Optional 자료형 (nullable임을 의미)
+		Optional<StudentEntity> studentOptional = studentRepository.findById(id);
+		studentOptional.ifPresent(s -> studentRepository.delete(s)); // 람다식 java14부터
 	}
 }

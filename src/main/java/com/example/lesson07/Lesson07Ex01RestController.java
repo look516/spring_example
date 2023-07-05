@@ -15,8 +15,6 @@ public class Lesson07Ex01RestController {
 	@Autowired
 	private StudentBO studentBO;
 	
-	// CUD + R
-	
 	// C:Create
 	@GetMapping("/1")
 	public StudentEntity create() {
@@ -36,5 +34,14 @@ public class Lesson07Ex01RestController {
 		// id가 4번인 dreamJob 변경 => "디자이너"
 		StudentEntity student = studentBO.updateStudentDreamJobById(4, "디자이너");
 		return student;
+	}
+	
+	// D:Delete
+	// 삭제된 행이 무엇이었는지 가져오고 싶다면?
+	@GetMapping("/3")
+	public String delete() {
+		// id:3, 4
+		studentBO.deleteStudentById(4);
+		return "삭제 완료";
 	}
 }

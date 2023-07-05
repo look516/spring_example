@@ -23,7 +23,7 @@ import lombok.ToString;
 @Builder(toBuilder = true)	// setter 대용 // toBuilder = true 몇 개의 필드만 바꾸는 게 허용됨
 @Getter		// getter
 @Table(name = "new_student") // 카멜로 찾는 걸로 설정해놓아서 테이블명에 언더바가 붙어있을 때 꼭 추가(_가 없는 테이블명이면 생략가능)
-@Entity	// 이 클래스는 Entity다
+@Entity(name = "new_student")	// 이 클래스는 Entity다
 public class StudentEntity {
 	@Id	// pk
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	// auto increment
